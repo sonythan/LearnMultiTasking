@@ -42,8 +42,14 @@ namespace LearnMultiTasking
             Thread thread1 = new Thread(s1);
             Thread thread2 = new Thread(s2);
 
+            thread1.Name = "CountNumeric Thread";
+            thread2.Name = "Alphabet Thread";
+
             thread1.Start();
             thread2.Start();
+
+            Console.WriteLine(thread1.Name);
+            Console.WriteLine(thread2.Name);
 
             Console.WriteLine("Main Thread Ends");
             Console.ReadKey();
