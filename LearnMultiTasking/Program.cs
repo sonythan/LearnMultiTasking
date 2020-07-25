@@ -18,6 +18,16 @@ namespace LearnMultiTasking
             }
             Console.WriteLine("Thread 1 End");
         }
+
+        public void Alphabets()
+        {
+            Console.WriteLine("Trhead 2 Start");
+            for (char c = 'A'; c <= 'Z'; c++) 
+            {
+                Console.WriteLine(c);
+            }
+            Console.WriteLine("Thread 2 End");
+        }
     }
     class Program
     {
@@ -26,9 +36,14 @@ namespace LearnMultiTasking
             Work w = new Work();
             Console.WriteLine("Main Thread Start");
 
-            ThreadStart s = w.Count;
-            Thread thread1 = new Thread(s);
+            ThreadStart s1 = w.Count;
+            ThreadStart s2 = w.Alphabets;
+
+            Thread thread1 = new Thread(s1);
+            Thread thread2 = new Thread(s2);
+
             thread1.Start();
+            thread2.Start();
 
             Console.WriteLine("Main Thread Ends");
             Console.ReadKey();
